@@ -1,0 +1,12 @@
+streamlit
+pandas
+numpy
+plotly
+folium
+streamlit-folium
+seaborn
+matplotlib
+protobuf==3.20.*
+statsmodels
+sklearn
+scikit-learn
