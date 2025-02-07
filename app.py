@@ -71,6 +71,8 @@ def load_data():
     state_mappings = {
         'Coahuila': 'Coahuila de Zaragoza',
         'D.F.': 'Ciudad de México',
+        'Distrito Federal': 'Ciudad de México',
+        'CDMX': 'Ciudad de México',
         'Michoacán': 'Michoacán de Ocampo',
         'Veracruz': 'Veracruz de Ignacio de la Llave',
         'Edo. México': 'México'
@@ -199,7 +201,7 @@ with tab_analysis:
             selected_states = st.multiselect(
                 "Select States:",
                 options=all_states,
-                default=["Jalisco", "Ciudad de México", "Nuevo León"],
+                default=["Ciudad de México", "Jalisco", "Nuevo León"],
                 key="select_states"
             )
             # selected_years_state = st.slider(
@@ -251,7 +253,7 @@ with tab_analysis:
             selected_states_yoy = st.multiselect(
                 "Select States (YoY):",
                 options=all_states_yoy,
-                default=["Jalisco", "Ciudad de México", "Nuevo León"],
+                default=["Ciudad de México", "Jalisco", "Nuevo León"],
                 key="select_states_yoy"
             )
             # selected_years_state_yoy = st.slider(
@@ -394,6 +396,11 @@ with tab_analysis:
     except Exception as e:
         st.error(f"Error loading GeoJSON file: {str(e)}")
         st.stop()
+
+    # Add this right after loading the GeoJSON (around line 400-450)
+    for feature in mx_geo['features']:
+        if feature['properties'].get('state_name') == 'Distrito Federal':
+            feature['properties']['state_name'] = 'Ciudad de México'
 
     # Build dictionaries
     ratio_dict = map_data['Price Ratio'].to_dict()
@@ -562,6 +569,8 @@ with tab_analysis:
 
     # # Create city to municipality mapping
     # city_to_mun = {
+    #     'Ciudad de México': 'Distrito Federal',
+    #     'CDMX': 'Distrito Federal',
     #     'Acapulco': 'Acapulco de Juárez',
     #     'Aguascalientes': 'Aguascalientes', 
     #     'Campeche': 'Campeche',
