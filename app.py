@@ -1224,7 +1224,7 @@ with tab_interpretation:
 # Footer (outside both tabs)
 st.markdown("---")
 st.markdown(
-    'Made by **[Valentin Mendez](https://www.linkedin.com/in/valentemendez/)** using 🌮 information from the '
+    'Made by **[El Mapaverso](https://x.com/elmapaverso?s=21)** using 🌮 information from the '
     '**[SNIIM](https://www.economia-sniim.gob.mx/Tortilla.asp)** (Sistema Nacional de Información e Integración de '
     'Mercados) with curated info from **[Kaggle](https://www.kaggle.com/datasets/richave/tortilla-prices-in-mexico)** by '
     '[Rick Chavelas](https://www.kaggle.com/richave) | **Last updated**: 2024'
